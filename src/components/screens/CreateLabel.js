@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import RNPrint from 'react-native-print';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
+import {NativeModules} from 'react-native';
+const {CalendarModule} = NativeModules;
 
 const CreateLabel = () => {
   const [cashPrice, setCashPrice] = useState('');
@@ -17,6 +19,17 @@ const CreateLabel = () => {
   const [printer, setPrinter] = useState('');
   const [tax, setTax] = useState(false);
   const [toggleAnimation] = useState(new Animated.Value(0));
+
+  const onPress = async () => {
+    console.log(CalendarModule);
+    try {
+      const message = await CalendarModule.createName('Hello');
+      console.log(message);
+    } catch (error) {
+      console.error('Failed to create name:', error);
+    }
+    CalendarModule.createName('Nader');
+  };
 
   const handleCashInput = text => {
     setCashPrice(text);
@@ -140,7 +153,7 @@ const CreateLabel = () => {
         </View>
       </View>
       <View style={styles.printButtonContainer}>
-        <Pressable onPress={handlePrint} style={styles.printButton}>
+        <Pressable onPress={onPress} style={styles.printButton}>
           <Text style={styles.printButtonText}>Print</Text>
         </Pressable>
       </View>

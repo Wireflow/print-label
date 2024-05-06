@@ -81,7 +81,22 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    repositories {
+        flatDir{
+            dir 'libs'
+        }
+    }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
@@ -113,6 +128,14 @@ dependencies {
     } else {
         implementation jscFlavor
     }
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.guolindev.permissionx:permissionx:1.7.1'
+    implementation files('libs/3.2.2-release.aar')
+    implementation files('libs/LPAPI-2019-11-20-R.jar')
+    implementation files('libs/image-1.8.4.6.aar')
+    implementation files('libs\\LPAPI-2019-11-20-R.jar')
+    implementation files('libs\\LPAPI-2019-11-20-R.jar')
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

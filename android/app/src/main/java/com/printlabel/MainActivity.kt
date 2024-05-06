@@ -1,11 +1,14 @@
 package com.printlabel
 
+import com.facebook.react.PackageList
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
+import com.facebook.react.ReactPackage
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint.fabricEnabled
 import com.facebook.react.defaults.DefaultReactActivityDelegate
 
 class MainActivity : ReactActivity() {
+
 
   /**
    * Returns the name of the main component registered from JavaScript. This is used to schedule
@@ -13,10 +16,13 @@ class MainActivity : ReactActivity() {
    */
   override fun getMainComponentName(): String = "printLabel"
 
+
+
   /**
    * Returns the instance of the [ReactActivityDelegate]. We use [DefaultReactActivityDelegate]
    * which allows you to enable New Architecture with a single boolean flags [fabricEnabled]
    */
   override fun createReactActivityDelegate(): ReactActivityDelegate =
       DefaultReactActivityDelegate(this, mainComponentName, fabricEnabled)
+
 }
