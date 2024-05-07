@@ -11,9 +11,10 @@ import {
 import RNPrint from 'react-native-print';
 import RNHTMLtoPDF from 'react-native-html-to-pdf';
 import {NativeModules} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 const {CalendarModule} = NativeModules;
 
-const CreateLabel = () => {
+const CreateLabel = ({navigation}) => {
   const [cashPrice, setCashPrice] = useState('');
   const [cardPrice, setCardPrice] = useState('');
   const [printer, setPrinter] = useState('');
@@ -155,6 +156,11 @@ const CreateLabel = () => {
       <View style={styles.printButtonContainer}>
         <Pressable onPress={onPress} style={styles.printButton}>
           <Text style={styles.printButtonText}>Print</Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate('choosePrinter')}
+          style={styles.printButton}>
+          <Text style={styles.printButtonText}>Go to Printer</Text>
         </Pressable>
       </View>
     </View>

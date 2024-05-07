@@ -17,8 +17,7 @@ class MainApplication : Application(), ReactApplication {
     lateinit var instance: MainApplication
       private set
 
-    @JvmStatic
-    fun getInstance(): MainApplication {
+    fun getAppInstance(): MainApplication {
       return instance
     }
   }
